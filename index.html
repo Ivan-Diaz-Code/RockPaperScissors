@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RockPaperScissors</title>
+    <script>
+      src = "script.js";
+    </script>
+  </head>
+  <body>
+    <script>
+      console.log("Hello World");
+
+      console.log(getComputerChocie());
+      function getComputerChocie() {
+        let choice = "";
+        let choiceNum = -1;
+        choiceNum = Math.random(choiceNum);
+        if (choiceNum < 0.334) {
+          choice = "rock";
+        } else if (choiceNum >= 0.334 && choiceNum < 0.667) {
+          choice = "paper";
+        } else {
+          choice = "scissors";
+        }
+        return choice;
+      }
+    </script>
+  </body>
+</html>
