@@ -4,8 +4,7 @@
     justify-content: space-evenly;
     height: 400px;
     width: 800px;
-    border: 4px solid midnightblue;
-   
+    border: 4px solid midnightblue; 
 }
 .container{
     flex: 1;

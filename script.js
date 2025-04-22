@@ -1,38 +1,27 @@
 
-      let humanScore = 0;
-      let computerScore = 0;
+    let humanScore = 0;
+    let computerScore = 0;
+    let counter = 0;
 
-      let counter = 0;
+    const computerSelection = getComputerChocie();
+    const buttons = document.querySelectorAll("button");
+    buttons.forEach((button) => { button.addEventListener("click", () => {
+        playRound(getHumanChoice(button.value),computerSelection)
+        });
+    });
 
-      while (counter < 5) {
-        const humanSelection = getHumanChoice().toLowerCase();
-        const computerSelection = getComputerChocie();
-        let answer = playRound(humanSelection, computerSelection);
-        if (answer === 0) {
-          computerScore++;
-        } else if (answer === 1) {
-          humanScore++;
-        }
-
-        counter++;
-      }
-      if (humanScore > computerScore) {
-        console.log("You win");
-      } else if (computerScore > humanScore) {
+    /*
+    if (humanScore > computerScore) {
+    console.log("You win");
+    } else if (computerScore > humanScore) {
         console.log("You lose!");
-      } else {
+    } else {
         console.log("It's a tie!");
-      }
+    }
+    */
 
-      /*
-      empty choice var to store string of rock, paper, scissors
-      choiceNum var set to number less than 0
-      use math.random to randomize choiceNum
-      if choiceNum is <.334 choice stores the string rock, if choiceNum is >= to 0.334 and < .667 choice stores the string paper
-        else choice stores scissors
-      getComputerChoice returns choice var which stores either rock, paper, scissors
-      */
-      function getComputerChocie() {
+      
+    function getComputerChocie() {
         let choice = "";
         let choiceNum = -1;
         choiceNum = Math.random(choiceNum);
@@ -44,28 +33,13 @@
           choice = "scissors";
         }
         return choice;
+    }
+
+      function getHumanChoice(val) {
+        console.log(val);
+        return val;
       }
-
-      /*
-      getHumanChoice function
-      empty choice var to store human choice
-      prompt user to choose between paper, rock, scissors
-      store user choice into empty var choice
-      return choice
-
-      just return choice var with prompt asking for rock, paper, or scissors
-      */
-
-      function getHumanChoice() {
-        return (choice = prompt("Rock, Paper, or Scissors"));
-      }
-      /*
-      playRound function with two parameters of the user input human choice and computer input computer choice
-      Set humanchoice to all lowercase to make it case insensitive
-      if both choices are the same it is a tie and redo
-      if human = rock
-      */
-
+      
       function playRound(humanChoice, computerChoice) {
         let result = -1;
         if (humanChoice === computerChoice) {
