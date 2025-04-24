@@ -3,10 +3,15 @@
     let computerScore = 0;
     let counter = 0;
 
-    const computerSelection = getComputerChocie();
+   
     const buttons = document.querySelectorAll("button");
     buttons.forEach((button) => { button.addEventListener("click", () => {
-        playRound(getHumanChoice(button.value),computerSelection)
+        let answer = playRound(getHumanChoice(button.value), getComputerChocie());
+        if (answer === 0) {
+          computerScore++;
+        } else if (answer === 1) {
+          humanScore++;
+        }
         });
     });
 
@@ -42,6 +47,7 @@
       
       function playRound(humanChoice, computerChoice) {
         let result = -1;
+        
         if (humanChoice === computerChoice) {
           console.log("tie!");
           return result;
