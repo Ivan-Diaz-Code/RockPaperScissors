@@ -1,6 +1,6 @@
 .display{
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: space-evenly;
     height: 400px;
     width: 800px;
@@ -26,9 +26,15 @@
     background-color: aqua;
 }
 
-.score{
+.scoreDisplay{
     display: flex;
     align-self: center;
+    
 }
+.resultDisplay{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 
+}
 

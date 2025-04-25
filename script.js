@@ -6,24 +6,31 @@
    
     const buttons = document.querySelectorAll("button");
     buttons.forEach((button) => { button.addEventListener("click", () => {
-        let answer = playRound(getHumanChoice(button.value), getComputerChocie());
-        if (answer === 0) {
-          computerScore++;
-        } else if (answer === 1) {
-          humanScore++;
+      const score = document.querySelector(".score")
+      let answer = playRound(getHumanChoice(button.value), getComputerChocie());
+        if(computerScore >=5 || humanScore >=5){
+          if(computerScore > humanScore)
+          {
+            score.textContent = "(" + humanScore + " , " + computerScore + ")\n You Lose";
+          }else{
+            score.textContent = "(" + humanScore + " , " + computerScore + ")\n You Win";
+          }
+          
+        }else{
+          if (answer === 0 && computerScore <= 5) {
+            computerScore++;
+            score.textContent = "(" + humanScore + " , " + computerScore + ")";
+          } else if (answer === 1 && humanScore <= 5) {
+            humanScore++;
+            score.textContent = "(" + humanScore + " , " + computerScore + ")";
+          }
+          
         }
+        
         });
     });
 
-    /*
-    if (humanScore > computerScore) {
-    console.log("You win");
-    } else if (computerScore > humanScore) {
-        console.log("You lose!");
-    } else {
-        console.log("It's a tie!");
-    }
-    */
+    
 
       
     function getComputerChocie() {
@@ -37,50 +44,53 @@
         } else {
           choice = "scissors";
         }
+        const computer = document.querySelector(".computer");
+        computer.textContent = choice;
         return choice;
     }
 
       function getHumanChoice(val) {
-        console.log(val);
+        const user = document.querySelector(".user");
+        user.textContent = val;
         return val;
       }
       
       function playRound(humanChoice, computerChoice) {
         let result = -1;
-        
+        const textResult = document.querySelector(".result");
         if (humanChoice === computerChoice) {
-          console.log("tie!");
+          textResult.textContent = "tie";
           return result;
         }
 
         if (humanChoice === "rock") {
           if (computerChoice === "paper") {
             result = 0;
-            console.log("you lose! rock loses to paper");
+            textResult.textContent = "lose";
             return result;
           } else if (computerChoice === "scissors") {
             result = 1;
-            console.log("you win! rock beats scissors");
+            textResult.textContent = "win";
             return result;
           }
         } else if (humanChoice === "paper") {
           if (computerChoice === "scissors") {
             result = 0;
-            console.log("you lose! paper loses to scissors");
+            textResult.textContent = "lose";
             return result;
           } else if (computerChoice === "rock") {
             result = 1;
-            console.log("you win! paper beats rock");
+            textResult.textContent = "win";
             return result;
           }
         } else if (humanChoice === "scissors") {
           if (computerChoice === "rock") {
             result = 0;
-            console.log("you lose! scissors loses to rock");
+            textResult.textContent = "lose";
             return result;
           } else if (computerChoice === "paper") {
             result = 1;
-            console.log("you win! scissors beats paper");
+            textResult.textContent = "win";
             return result;
           }
         }
